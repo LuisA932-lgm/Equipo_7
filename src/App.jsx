@@ -3,7 +3,7 @@ import { Inicio} from './Components/Inicio'
 import { useEffect, useState } from 'react'
 import { Registtro } from './Components/Registtro';
 import './App.css'
-
+import {BrowseRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
 
@@ -17,18 +17,25 @@ function App() {
   const [user, setUser] = useState([])
   
   return (
-   
+  <Router> 
       
   <div className ="App"> 
+
+    <Switch>
+      <Route path="/">
+        <Registtro />
+      </Route>
+        </Switch>
    
      { 
       !user.length > 0 ? <Formulario  setUser = {setUser}/> 
       : <Inicio user={user} setUser={setUser}/>    
     }  
-    
+   
       
  
     </div>
+    </Router>
 )
 
   }
